@@ -86,7 +86,7 @@ class ContactsStream(HubSpotStream):
                    "lead_source_original___new", 
                    "hs_email_domain", 
                    "country",
-                   "auth0_email_verification
+                   "auth0_email_verification"
         ]
 
         if self.replication_key:
