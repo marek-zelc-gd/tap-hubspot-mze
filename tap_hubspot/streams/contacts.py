@@ -86,7 +86,20 @@ class ContactsStream(HubSpotStream):
                    "lead_source_original___new", 
                    "hs_email_domain", 
                    "country",
-                   "auth0_email_verification"
+                   "auth0_email_verification",
+                   "to_be_deleted__c",
+                   "gacid",
+                   "hs_google_click_id",
+                   "hs_last_sales_activity_timestamp",
+                   "form_gated_assets_url",
+                   "hs_latest_source",
+                   "hs_latest_source_data_1",
+                   "hs_latest_source_data_2",
+                   "hs_latest_source_timestamp",
+                   "hs_analytics_first_visit_timestamp",
+                   "hs_analytics_last_visit_timestamp",
+                   "hs_analytics_first_timestamp",
+                   "hs_analytics_last_timestamp"
         ]
 
         if self.replication_key:
