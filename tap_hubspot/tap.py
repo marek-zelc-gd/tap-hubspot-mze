@@ -88,30 +88,6 @@ class TapHubSpot(Tap):
             default=1_000_000,
             description="Size of batch files",
         ),
-        th.Property(
-            "batch_config",
-            th.ObjectType(
-                th.Property(
-                    "encoding",
-                    th.ObjectType(
-                        th.Property("format", th.StringType, required=False),
-                        th.Property("compression", th.StringType, required=False),
-                    ),
-                    required=False,
-                ),
-                th.Property(
-                    "storage",
-                    th.ObjectType(
-                        th.Property("root", th.StringType, required=False),
-                        th.Property(
-                            "prefix", th.StringType, required=False, default=""
-                        ),
-                    ),
-                    required=False,
-                ),
-            ),
-            required=False,
-        ),
     ).to_dict()
 
     def discover_streams(self) -> List[Stream]:
