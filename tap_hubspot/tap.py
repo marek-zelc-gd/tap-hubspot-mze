@@ -94,20 +94,20 @@ class TapHubSpot(Tap):
                 th.Property(
                     "encoding",
                     th.ObjectType(
-                        th.Property("format", th.StringType, required=True),
-                        th.Property("compression", th.StringType, required=True),
+                        th.Property("format", th.StringType, required=False),
+                        th.Property("compression", th.StringType, required=False),
                     ),
-                    required=True,
+                    required=False,
                 ),
                 th.Property(
                     "storage",
                     th.ObjectType(
-                        th.Property("root", th.StringType, required=True),
+                        th.Property("root", th.StringType, required=False),
                         th.Property(
                             "prefix", th.StringType, required=False, default=""
                         ),
                     ),
-                    required=True,
+                    required=False,
                 ),
             ),
             required=False,
