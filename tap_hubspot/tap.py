@@ -89,13 +89,6 @@ class TapHubSpot(Tap):
             description="Size of batch files",
         ),
         th.Property(
-            "batch_size",
-            th.IntegerType,
-            required=False,
-            default=1_000_000,
-            description="Size of batch files",
-        ),
-        th.Property(
             "batch_config",
             th.ObjectType(
                 th.Property(
@@ -120,7 +113,7 @@ class TapHubSpot(Tap):
             required=False,
         ),
     ).to_dict()
-    ).to_dict()
+
 
     def discover_streams(self) -> List[Stream]:
         """Return a list of discovered streams."""
