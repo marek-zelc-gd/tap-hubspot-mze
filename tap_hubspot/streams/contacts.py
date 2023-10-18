@@ -99,7 +99,8 @@ class ContactsStream(HubSpotStream):
                    "hs_analytics_first_visit_timestamp",
                    "hs_analytics_last_visit_timestamp",
                    "hs_analytics_first_timestamp",
-                   "hs_analytics_last_timestamp"
+                   "hs_analytics_last_timestamp",
+                   "data_sources_form_field"
         ]
 
         if self.replication_key:
