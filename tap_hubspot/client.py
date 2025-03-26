@@ -87,10 +87,24 @@ class HubSpotStream(RESTStream):
         return False
 
     @property
-    def authenticator(self) -> BearerTokenAuthenticator:
-        """Return a new authenticator object."""
-        token: str = self.config["hapikey"]
-        return BearerTokenAuthenticator.create_for_stream(self, token)
+    def authenticator(self):
+        """Return a new authenticator object with OAuth support and HAPI key fallback."""
+
+        if "refresh_token" in self.config:
+            return HubSpotOAuthAuthenticator(
+                self,
+                auth_endpoint="https://api.hubapi.com/oauth/v1/token",
+            )
+        if "access_token" in self.config:
+            return BearerTokenAuthenticator(
+                self,
+                token=self.config["access_token"],
+            )
+        if "hapikey" in self.config:
+            token: str = self.config["hapikey"]
+            return BearerTokenAuthenticator.create_for_stream(self, token)
+
+        raise ValueError("No authentication method available. Provide either OAuth or HAPI key.")
 
     @property
     def http_headers(self) -> dict:

@@ -64,8 +64,20 @@ class TapHubSpot(Tap):
         th.Property(
             "hapikey",
             th.StringType,
-            required=True,
+            required=False,
             description="HubSpot private app token",
+        ),
+        th.Property(
+            "access_token",
+            th.StringType,
+            required=False,
+            description="HubSpot access token",
+        ),
+        th.Property(
+            "refresh_token",
+            th.StringType,
+            required=False,
+            description="HubSpot refresh token",
         ),
         th.Property(
             "start_from",
