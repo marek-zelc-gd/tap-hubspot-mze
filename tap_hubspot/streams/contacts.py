@@ -113,21 +113,6 @@ class ContactsStream(HubSpotStream):
 
         return props.to_dict()
 
-    @property
-    def is_sorted(self) -> bool:
-        """Check if stream is sorted.
-
-        When `True`, incremental streams will attempt to resume if unexpectedly
-        interrupted.
-
-        This setting enables additional checks which may trigger
-        `InvalidStreamSortException` if records are found which are unsorted.
-
-        Returns:
-            `True` if stream is sorted. Defaults to `False`.
-         """
-
-        return False
     
     @property
     def replication_key(self) -> Optional[str]:
