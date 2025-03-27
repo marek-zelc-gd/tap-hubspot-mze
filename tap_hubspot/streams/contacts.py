@@ -45,6 +45,10 @@ class ContactsStream(HubSpotStream):
                 "associations",
                 th.StringType,
             ),
+            th.Property(
+                "hs_lastmodifieddate",
+                th.StringType,
+            ),
         )
 
         # Needs to be defined manually since 2023-07-12 when
