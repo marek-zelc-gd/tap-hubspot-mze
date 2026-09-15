@@ -10,17 +10,20 @@ keywords = [
 license = "Apache 2.0"
 
 [tool.poetry.dependencies]
-python = "<3.11,>=3.9"
+python = ">=3.9,<3.13"
 requests = "^2.25.1"
-singer-sdk = "^0.13.1"
+singer-sdk = "^0.32.0"
+# fs (a singer-sdk dependency) still relies on the legacy pkg_resources
+# namespace-package pattern, which setuptools removed in 82.0.0.
+setuptools = "<82"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^7.0.1"
 tox = "^3.24.5"
-flake8 = "^4.0.1"
-black = "^22.1"
+flake8 = "^7.0.0"
+black = "^24.0"
 pydocstyle = "^6.1.1"
-mypy = "^0.991"
+mypy = "^1.11"
 types-requests = "^2.27.11"
 coverage = "^6.2"
 isort = "^5.10.1"

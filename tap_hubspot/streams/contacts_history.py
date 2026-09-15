@@ -2,7 +2,9 @@ from typing import IO, Any, Dict, Optional,Iterable
 import json
 from singer_sdk import typing as th  # JSON Schema typing helpers
 import requests
+from singer_sdk.exceptions import FatalAPIError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
+from singer_sdk.streams.core import REPLICATION_INCREMENTAL
 
 from tap_hubspot.client import HubSpotStream
 
@@ -198,7 +200,7 @@ class ContactsHistoryStream(HubSpotStream):
 
         if response.status_code != 200:
             self.logger.error(f"EEError response: {response.text}")
-            raise FatalAPIError(f"{response.status_code} Client Error: {response.reason} with path: {response.request.url} with params: {response.request.params}")
+            raise FatalAPIError(f"{response.status_code} Client Error: {response.reason} with path: {response.request.url}")
 
 
         try:
