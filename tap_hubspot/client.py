@@ -18,6 +18,8 @@ from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
 from singer_sdk.streams.core import REPLICATION_INCREMENTAL
 
+from tap_hubspot.auth import HubSpotOAuthAuthenticator
+
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 
@@ -37,6 +39,9 @@ class HubSpotStream(RESTStream):
     properties_object_type: Optional[str] = None
     # Used to cache extra properties fetched
     extra_properties: Optional[list[str]] = None
+
+    # Override in subclass to reduce the number of records fetched per request
+    request_limit: Optional[int] = None
 
     # Set if forcing non-search endpoint
     forced_get = False
